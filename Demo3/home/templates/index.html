@@ -34,27 +34,28 @@
         </form>
          <hr class="my-2">
                 
-            <table class="table">
-                    <thead class="thead-light">
+           <table class="table table-striped">
+                 <thead>
+                    <tr>
+                       <th>#</th>
+                        <th>Student Name</th>
+                        <th>Lucky Number</th>
+                    </tr>
+                 </thead>
+                 <tbody>
+                        {% for student in students %}
                         <tr>
-                            <th>#</th>
-                            <th>Student Name</th>
-                            <th>Lucky Number</th>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ student.name }}</td>
+                            <td>{{ student.lucky_number }}</td>
                         </tr>
-                    </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>4</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>5</td>
-                    </tr>
-                </tbody>
-          </table>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center">No student added yet</td>
+                        </tr>
+                        {% endfor %}
+                 </tbody>
+            </table>
          
     </div>
 
