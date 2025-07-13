@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+   <nav class="navbar navbar-dark bg-primary">
+   <a class="navbar-brand font-bold" href="/"> ADD TASK</a>
+    </nav>
+     
+    <main class="p-4">
+        <a href="/"> Back to tasks </a>
+        <div class="pt-2">
+            Fill in the details below to add task
+        </div>
+        <hr>
+        <form action="/add/" method="POST" class="card p-4">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="formGroupExampleInput">Title</label>
+                <input name="title" required type="text" class="form-control" id="formGroupExampleInput" placeholder="eg. Go Home">
+            </div>
+
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Description</label>
+                <textarea name="description" type="text" class="form-control" id="formGroupExampleInput2" placeholder="e.g.I will head home"></textarea>
+           </div>
+
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Due Date</label>
+                <input name="duedate" type="date" class="form-control" id="formGroupExampleInput2" placeholder="dd/mm/yyyy">
+           </div>
+
+           <div class="form-group">
+             <label for="formGroupExampleInput2">Priority</label>
+             <select name="priority" id="" class="form-control">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+             </select>
+
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Status</label>
+             <select name="status" id="" class="form-control">
+                    <option value="Done">Done</option>
+                    <option value="Pending">Pending</option>
+                    <option value="In_progress">In progress</option>
+             </select>                  
+           </div>    
+           <div>
+                <button type="submit" class="btn btn-success">
+                 Add Task
+                 </button>
+           </div>       
+          
+                  
+             
+        </form>
+
+ </main>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+</html>
