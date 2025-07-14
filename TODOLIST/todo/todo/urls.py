@@ -1,5 +1,5 @@
 """
-URL configuration for Demo3 project.
+URL configuration for todo project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -16,13 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from home.views import homePage
-from home.views import contextPage
-from home.views import profilePage
+from home.views import homepage,addTask
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', homePage ),
-    path('context/', contextPage),
-    path('profile/', profilePage)
+    path('', homepage),
+    path('add', addTask)
+
 ]

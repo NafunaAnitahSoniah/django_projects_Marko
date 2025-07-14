@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from datetime import datetime
 
 #box or list of the students
 students = []
@@ -39,3 +40,30 @@ def addStudent(request):
     }
     students.append(new_student)
 """
+
+#creating a context and templating in django
+def contextPage(request):
+    context ={
+        "name": "David",
+        "date": datetime.now(),
+        "students":21,
+        
+    }
+    return render(request, "context.html", context)
+
+def profilePage(request):
+    age = 2025-1967
+    context ={
+        "name": "David",
+        "nin_number":"CF2500GKMH",
+        "course":"Math",
+        #we can use a value or a variable
+        "age":age, 
+        
+    }
+    return render(request, "profile.html", context)
+
+#Create a page that has a form so that a person is able to fill in the datad and they are able
+# to fill in the data and they are able to get the response
+# try to use A1 to give you challenges
+# try to look up DYNAMIC URLS

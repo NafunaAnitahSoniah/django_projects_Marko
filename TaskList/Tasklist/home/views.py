@@ -36,7 +36,24 @@ def addPage(request):
             'duedate': duedate,
             'priority':priority,
             'status':status,
-        }   
+        } 
+
+        #to see that the task doesn't exist
+        isAlreadyCreated = False
+        for each in all_tasks:
+            if each['title'] == title:
+                isAlreadyCreated = True
+            else:
+                continue
+        if isAlreadyCreated == False:
+            all_tasks.append(task)
+            return redirect('/')
+        else:
+            context = {
+                'error': "'The task '"+title+"' is already created"
+            }
+            return render(request, "add.html", context)
+          
         all_tasks.append(task)
         return redirect('/')
     

@@ -1,5 +1,5 @@
 """
-URL configuration for Demo3 project.
+URL configuration for Soniahs_Blog project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -16,13 +16,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from home.views import homePage
-from home.views import contextPage
-from home.views import profilePage
+
+from blog.views import blogHome, addBlog, viewBlog
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', homePage ),
-    path('context/', contextPage),
-    path('profile/', profilePage)
+]
+
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+   
+    # Blogs Routes
+    path("blog/", blogHome),
+    path("blog/add/", addBlog),
+    # Dynamic URL
+    path("blog/view/<str:link>", viewBlog),
+
 ]

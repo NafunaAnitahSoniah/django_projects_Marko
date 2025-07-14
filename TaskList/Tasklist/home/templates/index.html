@@ -39,8 +39,13 @@
                         
                         <div class="card-body"> 
                             <span class="badge badge-pill badge-primary">{{ task.priority }}</span>
+                            {% if task.status == 'done' %}
                             <span class="badge badge-pill badge-success">{{ task.status }}</span>
+                            {% else %}
+                            <span class="badge badge-pill badge-warning">{{ task.status }}</span>                       
+                            {% endif %}
                         </div>
+                        
                         <div class="py-2">
                          <a href="/view" class="btn btn-primary btn-md">View</a>
                         </div>
