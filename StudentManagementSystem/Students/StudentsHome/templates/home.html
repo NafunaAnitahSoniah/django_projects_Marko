@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>Student Management</title>
+</head>
+
+<body>    
+ 
+   <div class="jumbotron">
+     <div style="background-color: rgb(42, 211, 211);">
+            <nav class="nav">
+                <div >
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#!">Student Management System</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a type="button" class="btn btn-danger btn-sm" href="#!">Add student</a>
+                        </li>
+                        <div class="container">
+                            <li>
+                                <form class="form-inline my-2 my-lg-0">
+                                    <input class="form-control mr-sm-2" type="text" placeholder="Search Student" aria-label="Search">
+                                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                </form>
+                            </li>
+                        </div>
+                    </ul>
+            
+                </div>
+            </nav>
+        </div>
+
+        <main class="p-4">
+            <div class="jumbotron">                
+              <table class="table" style="border: 5px; border-radius: 10%; border-color: blueviolet; background-color: bisque;">
+                    <tr>
+                        <div>
+                            <td >
+                                <div class="text-center border rounded lg p-4 bg-blue" style="margin:10px; border: 10px; border-radius: 10px;">
+                                    <h1 class="text-lg font-bold">40</h1>
+                                    <p class="text-sm text-gray-400"> Total Students </p>
+                                </div>
+                            </td>
+                            <td>
+                                    <div class="text-center border rounded lg p-4 bg-white">
+                                        <h1 class="text-lg font-bold">40</h1>
+                                        <p class="text-sm text-gray-400"> Average result </p>
+                                    </div>
+                            </td>
+                                <td>
+                                <div class="text-center border rounded lg p-4 bg-white">
+                                    <h1 class="text-lg font-bold">40</h1>
+                                    <p class="text-sm text-gray-400"> Total courses</p>
+                                </div>
+                                </td>
+                        </div>
+                    </tr>
+              </table>
+          </div>
+
+            <div class="table table-responsive w-full">
+              <table class="table table-striped w-full rounded-lg ">
+                 <thead class="bg-gray-200" style="background-color: darkgray;">
+                    <tr>
+                       <th >#</th>
+                        <th>Student Name</th>
+                        <th>Student ID </th>                    
+                        <div class="flex container lg"><th>Actions</th> </div> 
+                    </tr>
+                 </thead>
+                 <tbody>
+                        {% for student in students %}
+                        <tr class="text-left hover:bg-gray-100" style="text-align: left;">
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td>{{ student.name }}</td>
+                            <td>{{ student.ID }}</td>
+                            
+                            <td class="flex items-center gap2">
+                                <div class="flex container">
+                                    <span> </span>
+                                    <span> <a href="/view" type="button" class="btn btn-success btn-sm">View</a> </span>
+                                    <span> </span><a href="/edit" class="btn btn-primary btn-sm">Edit</a> </span>
+                                    <span> <a href="/delete" type="button" class="btn btn-danger btn-sm">delete</a> </span>
+                                
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center">No student added yet</td>
+                        </tr>
+
+                        {% endfor %}
+                 </tbody>
+            </table>
+            </div>
+        </main>
+
+ </div>  
+ 
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
