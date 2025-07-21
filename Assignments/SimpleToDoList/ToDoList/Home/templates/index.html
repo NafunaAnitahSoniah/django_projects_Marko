@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>ToDo List</title>
+
+    <style>
+        #mainNav {
+            background-color: blueviolet;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="mainNav" class="navbar navbar-dark nav-center">
+        <a class="navbar-brand font-bold" style="color: aliceblue;" href="/"> MY TO DO LIST</a>
+
+    </nav>
+
+    <main class="jumbotron">
+        <a href="add/" type="button" class="btn btn-warning" style="align-items:end;"> Add a new Task </a>
+        <div class="container">
+            <b>To Do List</b>
+        </div>
+        <hr>
+
+        <div class="card-group">
+            {% for task in all_tasks %}
+            <div class="card">
+                <p> ID: {{ task.id }} </p>
+                <div class="card-body">
+                    <h2 class="card-title">{{ task.title }}</h2>
+                    <p class="card-text" style="text-indent: 2;">{{ task.description }}</p>
+                    <p class="text-muted">{{ task.duedate }}</p>
+
+                    <div class="card-body">
+                        <span class="badge badge-pill badge-primary">{{ task.priority }}</span>
+                        {% if task.status == 'Completed' %}
+                        <span class="badge badge-pill badge-success">{{ task.status }}</span>
+                        {% else %}
+                        <span class="badge badge-pill badge-warning">{{ task.status }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="card-body">
+                        <span>
+                            <a href="/update" class="btn btn-success btn-sm">Update Task Status</a>
+                        </span>
+                        <span>
+                            <a href="/view" class="btn btn-danger btn-sm">Delete</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+
+        </div>
+
+    </main>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
