@@ -38,16 +38,18 @@ def addPage(request):
 
      return render(request, "add.html")
 
+
 def updateTask(request, task_id):
-    all_tasks = Tasklist.objects.all()
-    for task in all_tasks:
-        if request.method == 'POST':
-            task.priority = request.POST.get('priority')
-            task.status = request.POST.get('status')
-            task.save()
-        return redirect('/')  # Redirect to task list or detail page
+    task = get_object_or_404(Tasklist, id=task_id)
+
+    if request.method == 'POST':
+        task.priority = request.POST.get('priority')
+        task.status = request.POST.get('status')
+        task.save()
+        return redirect('/')
 
     return render(request, 'updateTask.html', {'task': task})
+
 
 def deleteTask(request, task_id):
     task = get_object_or_404(Tasklist, id=task_id)

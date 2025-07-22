@@ -1,85 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">    
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/css/bootstrap.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="Description" content="Enter your description here" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
     <title>Update Task</title>
-
     <style>
         body {
-            background-color: #f4f6f8;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #f5f0ff;
+            padding: 50px;
         }
-
-        .update-form {
-            max-width: 500px;
-            margin: 60px auto;
-            background-color: #ffffff;
+        .form-container {
+            background-color: #fff;
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(128, 0, 128, 0.2);
+            max-width: 500px;
+            margin: auto;
         }
-
-        .form-title {
+        .form-container h2 {
+            color: #4b0082;
             text-align: center;
+            margin-bottom: 25px;
+        }
+        .form-group {
             margin-bottom: 20px;
-            font-weight: 600;
-            color: #6a1b9a;
         }
-
-        .btn-submit {
-            background-color: #6a1b9a;
+        label {
+            color: #4b0082;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .btn-group {
+            text-align: center;
+            margin-top: 25px;
+        }
+        .btn {
+            background-color: #800080;
             color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 8px;
+            margin: 0 10px;
+            cursor: pointer;
         }
-
-        .btn-submit:hover {
-            background-color: #5a1480;
+        .btn:hover {
+            background-color: #9932cc;
+        }
+        .btn-secondary {
+            background-color: #ccc;
+            color: #333;
         }
     </style>
 </head>
-
 <body>
-
-    <div class="update-form">
-        <h3 class="form-title">Update Task: {{ task.title }}</h3>
+    <div class="form-container">
+        <h2>Update Task</h2>
         <form method="POST">
             {% csrf_token %}
-
-            <!-- Priority Dropdown -->
             <div class="form-group">
-                <label for="priority">Priority</label>
-                <select class="form-control" id="priority" name="priority" required>
-                    <option value="Low" {% if task.priority=='Low' %}selected{% endif %}>Low</option>
-                    <option value="Medium" {% if task.priority=='Medium' %}selected{% endif %}>Medium</option>
-                    <option value="High" {% if task.priority=='High' %}selected{% endif %}>High</option>
+                <label>Title</label>
+                <input type="text" value="{{ task.title }}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea disabled>{{ task.description }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Due Date</label>
+                <input type="date" value="{{ task.duedate }}" disabled>
+            </div>
+
+            <div class="form-group">
+                <label>Priority</label>
+                <select name="priority">
+                    <option value="Low" {% if task.priority == "Low" %}selected{% endif %}>Low</option>
+                    <option value="Medium" {% if task.priority == "Medium" %}selected{% endif %}>Medium</option>
+                    <option value="High" {% if task.priority == "High" %}selected{% endif %}>High</option>
                 </select>
             </div>
 
-            <!-- Status Dropdown -->
             <div class="form-group">
-                <label for="status">Status</label>
-                <select class="form-control" id="status" name="status" required>
-                    <option value="Pending" {% if task.status=='Pending' %}selected{% endif %}>Pending</option>
-                    <option value="In Progress" {% if task.status=='In Progress' %}selected{% endif %}>In Progress
-                    </option>
-                    <option value="Completed" {% if task.status=='Completed' %}selected{% endif %}>Completed</option>
+                <label>Status</label>
+                <select name="status">
+                    <option value="Pending" {% if task.status == "Pending" %}selected{% endif %}>Pending</option>
+                    <option value="In Progress" {% if task.status == "In Progress" %}selected{% endif %}>In Progress</option>
+                    <option value="Completed" {% if task.status == "Completed" %}selected{% endif %}>Completed</option>
                 </select>
             </div>
 
-            <!-- Submit Button -->
-            <div class="text-center">
-                <button type="submit" class="btn btn-submit">Update Task</button>
+            <div class="btn-group">
+                <button type="submit" class="btn">Update</button>
+                <a href="/" class="btn btn-secondary">Cancel</a>
             </div>
         </form>
     </div>
-
 </body>
-
 </html>

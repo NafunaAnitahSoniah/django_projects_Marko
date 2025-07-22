@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homePage, name='homePage'),
     path('add/', addPage, name='addPage'),
-    path('update/<int:task_id>/', updateTask, name='updateTask'),  # add name
+    path('update/<int:task_id>/', updateTask, name='updateTask'), 
     path('delete/<int:task_id>/', deleteTask, name='deleteTask'),  # add name
 ]
 
