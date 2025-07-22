@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.6.0/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Update Task</title>
+
+    <style>
+        body {
+            background-color: #f4f6f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .update-form {
+            max-width: 500px;
+            margin: 60px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #6a1b9a;
+        }
+
+        .btn-submit {
+            background-color: #6a1b9a;
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background-color: #5a1480;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="update-form">
+        <h3 class="form-title">Update Task: {{ task.title }}</h3>
+        <form method="POST">
+            {% csrf_token %}
+
+            <!-- Priority Dropdown -->
+            <div class="form-group">
+                <label for="priority">Priority</label>
+                <select class="form-control" id="priority" name="priority" required>
+                    <option value="Low" {% if task.priority=='Low' %}selected{% endif %}>Low</option>
+                    <option value="Medium" {% if task.priority=='Medium' %}selected{% endif %}>Medium</option>
+                    <option value="High" {% if task.priority=='High' %}selected{% endif %}>High</option>
+                </select>
+            </div>
+
+            <!-- Status Dropdown -->
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" id="status" name="status" required>
+                    <option value="Pending" {% if task.status=='Pending' %}selected{% endif %}>Pending</option>
+                    <option value="In Progress" {% if task.status=='In Progress' %}selected{% endif %}>In Progress
+                    </option>
+                    <option value="Completed" {% if task.status=='Completed' %}selected{% endif %}>Completed</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-submit">Update Task</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
