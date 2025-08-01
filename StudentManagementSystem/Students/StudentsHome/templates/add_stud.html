@@ -22,10 +22,10 @@
                     <a class="nav-link active" href="#!"> Add New Student</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#!"> Back to Home Page</a>
+                    <a class="nav-link" href="/"> Back to Home Page</a>
                 </li>
                 <li class="nav-item">
-                    <a type="button" class="btn btn-danger btn-sm" href="">+Add</a>
+                    <a type="button" class="btn btn-danger btn-sm" href="/"> + Add</a>
                 </li>
             </ul>
             </nav>
@@ -36,61 +36,63 @@
                 <div style="text-decoration: solid; text-emphasis-color:black ;">
                     <h1 class="lead"> Enter Student Details </h1>
                 </div>
-                <form action="/add" method="POST" class="flex flex-col gap-2">
-                    {% crsf_token %}
-                    <div class="form-group">
-                        <label for="formGroupExampleInput">Student name</label>
-                        <input name="name" required type ="text" class="form-control" id="formGroupExampleInput" placeholder="Nafuna Soniah">
-                    </div>
-                    <div class="form-group">
-                        <select class="custom-select">
-                            <option selected="">Gender</option>
-                            <option value="1">Male</option>
-                            <option value="2">Female</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="formGroupExampleInput2">Date of Birth</label>
-                        <input required type="date" class="form-control" id="formGroupExampleInput2" placeholder="dd/mm/yyyy">
-                    </div>
+             <div class="form">
+                    <form action="/add" method="POST" class="flex flex-col gap-2">
+                        {% csrf_token %} 
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Student name</label>
+                            <input name="name" required type ="text" class="form-control" id="formGroupExampleInput" placeholder="Nafuna Soniah">
+                        </div>
+                        <div class="form-group">
+                            <select name="gender" class="custom-select">
+                                <option selected="">Gender</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Date of Birth</label>
+                            <input name="date_of_birth" required type="date" class="form-control" id="formGroupExampleInput2" placeholder="dd/mm/yyyy">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Email</label>
+                            <input required type="email" class="form-control" id="formGroupExampleInput2" placeholder="son@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Phone</label>
+                            <input name="phone" required type="tel" class="form-control" id="formGroupExampleInput2" placeholder="0789345271">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Address</label>
+                            <input name="address" required type="text" class="form-control" id="formGroupExampleInput2" placeholder="e.g Kampala">
+                        </div>
                     
-                    <div class="form-group">
-                        <label for="formGroupExampleInput2">Email</label>
-                        <input required type="email" class="form-control" id="formGroupExampleInput2" placeholder="son@gmail.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="formGroupExampleInput2">Phone</label>
-                        <input required type="tel" class="form-control" id="formGroupExampleInput2" placeholder="0789345271">
-                    </div>
-                    <div class="form-group">
-                        <label for="formGroupExampleInput2">Address</label>
-                        <input required type="text" class="form-control" id="formGroupExampleInput2" placeholder="e.g Kampala">
-                    </div>
-                   
-                    <div class="form-group">
-                        <label for="formGroupExampleInput2">Next of Kin</label>
-                        <input required type="text" class="form-control" id="formGroupExampleInput2" placeholder="Parent/ Guardians's name">
-                    </div>
-                    <div class="form-group">
-                        <label for="formGroupExampleInput2">Next of kin Phone</label>
-                        <input required type="tel" class="form-control" id="formGroupExampleInput2" placeholder="0789345271">
-                    </div>                
-                    <div class="form-group">
-                        <label for="formGroupExampleInput2">Course</label>
-                        <input required type="text" class="form-control" id="formGroupExampleInput2" placeholder="CSE Python">
-                    </div>
-                    <div class="form-group">
-                        <label for="formGroupExampleInput2">Result</label>
-                        <input required type="number" class="form-control" id="formGroupExampleInput2" placeholder="Enter Percentage Mark">
-                    </div>
-                    <div class="form-group">
-                        <label for="formGroupExampleInput2"> Student ID</label>
-                        <input required type="text" class="form-control" id="formGroupExampleInput2" placeholder="e.g CSE0001">
-                    </div>
-                    <div>
-                        <button type="button" class="btn btn-success">Add Student</button>
-                    </div>
-                </form>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Next of Kin</label>
+                            <input name="next_of_kin" required type="text" class="form-control" id="formGroupExampleInput2" placeholder="Parent/ Guardians's name">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Next of kin Phone</label>
+                            <input name="next_of_kin_phone" required type="tel" class="form-control" id="formGroupExampleInput2" placeholder="0789345271">
+                        </div>                
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Course</label>
+                            <input name="course" required type="text" class="form-control" id="formGroupExampleInput2" placeholder="CSE Python">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2">Result</label>
+                            <input name="result" required type="number" class="form-control" id="formGroupExampleInput2" placeholder="Enter Percentage Mark">
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput2"> Student ID</label>
+                            <input name="student_id" required type="text" class="form-control" id="formGroupExampleInput2" placeholder="e.g CSE0001">
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-success">Add Student</button>
+                        </div>
+                    </form>
+             </div>
 
             </div>
           </main>

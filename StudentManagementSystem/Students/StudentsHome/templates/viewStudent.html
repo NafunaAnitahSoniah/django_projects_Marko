@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title> View Student</title>
+</head>
+
+<body>
+    <div>
+
+        <div style="background-color: rgb(42, 211, 211);">
+                <nav class="nav">
+                    <div >
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#!"> {{ name }}</a>
+                            </li>
+                        
+                            <li class="nav-item">
+                                <a type="button" class="btn btn-danger btn-md" href="add/">Add New student</a>
+                            </li>
+                            <div class="container">
+                                <li>
+                                    <form action="search/" method="POST" class="form-inline my-2 my-lg-0">
+                                        <input class="form-control mr-sm-2" type="text" placeholder="Search Student" aria-label="Search">
+                                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                    </form>
+                                </li>
+                            </div>
+                        </ul>
+                
+                    </div>
+                </nav>
+        </div>  
+           
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

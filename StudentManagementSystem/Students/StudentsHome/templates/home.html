@@ -23,11 +23,11 @@
                         </li>
                     
                         <li class="nav-item">
-                            <a type="button" class="btn btn-danger btn-sm" href="#!">Add student</a>
+                            <a type="button" class="btn btn-danger btn-sm" href="add/">Add New  student</a>
                         </li>
                         <div class="container">
                             <li>
-                                <form class="form-inline my-2 my-lg-0">
+                                <form action="search/" method="POST" class="form-inline my-2 my-lg-0">
                                     <input class="form-control mr-sm-2" type="text" placeholder="Search Student" aria-label="Search">
                                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                                 </form>
@@ -39,20 +39,20 @@
             </nav>
         </div>
 
-        <main class="p-4">
-            <div class="jumbotron">                
+        <main class="p-4 w-full">
+            <div class="jumbotron w-full">                
               <table class="table" style="border: 5px; border-radius: 10%; border-color: blueviolet; background-color: bisque;">
                     <tr>
                         <div>
                             <td >
                                 <div class="text-center border rounded lg p-4 bg-blue" style="margin:10px; border: 10px; border-radius: 10px;">
-                                    <h1 class="text-lg font-bold">40</h1>
+                                    <h1 class="text-lg font-bold"> {{ total }}</h1>
                                     <p class="text-sm text-gray-400"> Total Students </p>
                                 </div>
                             </td>
                             <td>
                                     <div class="text-center border rounded lg p-4 bg-white">
-                                        <h1 class="text-lg font-bold">40</h1>
+                                        <h1 class="text-lg font-bold"> {{ average }} </h1>
                                         <p class="text-sm text-gray-400"> Average result </p>
                                     </div>
                             </td>
@@ -78,19 +78,18 @@
                     </tr>
                  </thead>
                  <tbody>
-                        {% for student in students %}
+                        {% for student in all_students %}
                         <tr class="text-left hover:bg-gray-100" style="text-align: left;">
-                            <th scope="row">{{ forloop.counter }}</th>
+                            <th scope="row">{{ student.id }}</th>
                             <td>{{ student.name }}</td>
-                            <td>{{ student.ID }}</td>
+                            <td>{{ student.student_id }}</td>
                             
                             <td class="flex items-center gap2">
                                 <div class="flex container">
                                     <span> </span>
                                     <span> <a href="/view" type="button" class="btn btn-success btn-sm">View</a> </span>
                                     <span> </span><a href="/edit" class="btn btn-primary btn-sm">Edit</a> </span>
-                                    <span> <a href="/delete" type="button" class="btn btn-danger btn-sm">delete</a> </span>
-                                
+                                    <span> <a href="/delete" type="button" class="btn btn-danger btn-sm">Delete</a> </span>                                
                                 </div>
                             </td>
                         </tr>
